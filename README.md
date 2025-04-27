@@ -1,7 +1,9 @@
-# q_chat_bot
+# QBot
 
 A customizable and easy-to-use chatbot widget for Flutter apps. With `q_chat_bot`, you can quickly integrate a chatbot that responds to user input based on predefined keywords and responses. Fully customizable UI, including bot and user message styles, icons, and background colors.
 
+## Demo
+<p align="center"><img src="https://github.com/user-attachments/assets/4c5f21ff-3041-417e-9770-73fe1f0f7c4e"  alt="QBotDemo" height="844" width="431.38"/></p>
 
 ## Features
 
