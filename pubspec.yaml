@@ -1,0 +1,20 @@
+name: q_chat_bot
+description: "A customizable chatbot widget for Flutter apps."
+version: 1.0.0
+homepage: https://github.com/el-kady3zzat/QBot-Package
+repository: https://github.com/el-kady3zzat/QBot-Package
+issue_tracker: https://github.com/el-kady3zzat/QBot-Package/issues
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+  golden_toolkit: ^0.15.0
