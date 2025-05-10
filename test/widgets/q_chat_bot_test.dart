@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
-import 'package:q_chat_bot/pages/q_bot.dart';
+import 'package:q_chat_bot/q_bot.dart';
 import 'package:q_chat_bot/q_bot_config.dart';
 
 void main() {

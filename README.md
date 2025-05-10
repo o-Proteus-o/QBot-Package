@@ -1,5 +1,10 @@
 # QBot
 
+<p align="center"><img src="https://github.com/user-attachments/assets/7e17ace6-66ab-440e-a7de-a0f11b17bf12"  alt="Palestine"/></p>
+
+--- 
+
+
 A customizable and easy-to-use chatbot widget for Flutter apps. With `q_chat_bot`, you can quickly integrate a chatbot that responds to user input based on predefined keywords and responses. Fully customizable UI, including bot and user message styles, icons, and background colors.
 
 ## Demo
@@ -19,7 +24,7 @@ To add `q_chat_bot` to your Flutter project, open your `pubspec.yaml` file and a
 
  ```yaml
  dependencies:
-   q_chat_bot: ^1.0.0
+   q_chat_bot: ^1.0.5
 ```
 
 ## Usage
@@ -28,48 +33,62 @@ First, You need to customize the `QBot`
 
 ```dart
 QBotConfig config = QBotConfig(
-      // Required arguments
-      txtFieldPadding: EdgeInsets.fromLTRB(8, 8, 0, 8),
-      msgController: msgController,
+    // Required Parameters
+    txtFieldPadding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+    msgController: msgController,
+    hintText: 'Type / for suggestions.',
+    welcomeMsg: 'Hi, I\'m Q-Bot. How can I assest you?',
+    botIcon: Icon(Icons.android, color: Colors.white),
+    botMsgBgColor: Colors.green,
+    userIcon: Icon(Icons.person, color: Colors.white),
+    userMsgBgColor: Colors.blue,
+    paddingBetweenMsgs: 8.0,
+    keywords: [
+      'Hello', 
+      'What are you', 
+      'thanks',
+    ],
+    responses: [
+      'Hi, How can I help you?',
+      'I\'m QBot, I\'m here to answer your questions about this app.',
+      'You are welcome.',
+    ],
+    
+    // Optional Parameters
+    bgColor: Colors.black87,
+    txtFiledDecoration: InputDecoration(
       hintText: 'Type / for suggestions.',
-      welcomeMsg: 'Hi, I\'m Q-Bot. How can I assest you?',
-      botIcon: Icon(Icons.android, color: Colors.white),
-      botMsgBgColor: Colors.green,
-      userIcon: Icon(Icons.person, color: Colors.white),
-      userMsgBgColor: Colors.blue,
-      paddingBetweenMsgs: 8.0,
-      keywords: ['Hello', 'What are you', 'thanks'],
-      responses: [
-        'Hi, How can I help you?',
-        'I\'m QBot, I\'m here to answer your questions about this app.',
-        'You are welcome.',
-      ],
-      // Optional arguments
-      bgColor: Colors.black87,
-      txtFiledDecoration: InputDecoration(
-        hintText: 'Type / for suggestions.',
-        hintStyle: TextStyle(color: Colors.grey),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+      hintStyle: TextStyle(color: Colors.grey),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
       ),
-      sendIcon: Icon(Icons.send_rounded, color: Colors.blue),
-      msgStyle: TextStyle(color: Colors.white),
-      divider: SizedBox(),
-      typing: SizedBox(
-        height: 50,
-        width: 50,
-        child: Lottie.asset('assets/typing.json'),
+    ),
+    sendIcon: Icon(Icons.send_rounded, color: Colors.blue),
+    msgStyle: TextStyle(color: Colors.white),
+    divider: SizedBox(),
+    typing: SizedBox(
+      height: 50,
+      width: 50,
+      child: Lottie.asset('assets/typing.json'),
+    ),
+    delay: 2,
+    msgTime: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0.0),
+      child: Text(
+        DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.now()),
+        style: TextStyle(color: Colors.blueGrey),
       ),
-      delay: 2,
-      msgTime: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0.0),
-        child: Text(
-          DateFormat('dd/MM/yyyy hh:mm a').format(DateTime.now()),
-          style: TextStyle(color: Colors.blueGrey),
-        ),
-      ),
-    );
+    ),
+    txtFieldStyle: TextStyle(),
+    txtFiledGgColor: Colors.white,
+    txtFiledGgShape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+    suggestionsListBgColor: Colors.white,
+    suggestionsListTextStyle: TextStyle(),
+    suggestionsListHeight: 200,
+    noResponseMsg: 'Sorry, I cannot find an answer.',
+  );
 ```
 
 Then just use it like this:
