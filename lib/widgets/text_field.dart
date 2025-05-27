@@ -1,20 +1,50 @@
 import 'package:flutter/material.dart';
 
+/// A custom text field widget for the chat interface.
+///
+/// This widget provides a text input field with an optional suggestions list
+/// and allows users to type messages to the bot. The suggestions list is
+/// shown when the user types a '/' character.
 class MsgTextField extends StatefulWidget {
+  /// Padding to be applied to the text field.
   final EdgeInsetsGeometry txtFieldPadding;
+
+  /// The controller to manage the text input.
   final TextEditingController msgController;
+
+  /// The TextStyle of the text field.
+  final TextStyle? txtFieldStyle;
+
+  /// Optional decoration for the text field.
   final InputDecoration? txtFiledDecoration;
+
+  /// The hint text to show in the text field.
   final String hintTxt;
+
+  /// List of keywords to trigger suggestions.
   final List<String> keywords;
-  final Widget? suggestionsList;
+
+  /// Height of the suggestions list.
+  final double? suggestionsListHeight;
+
+  /// Background color of the suggestions list.
+  final Color? suggestionsListBgColor;
+
+  /// Text Style of the suggestions list.
+  final TextStyle? suggestionsListTextStyle;
+
+  /// Constructs a [MsgTextField] widget.
   const MsgTextField({
     super.key,
     required this.txtFieldPadding,
     required this.msgController,
+    this.txtFieldStyle,
     required this.hintTxt,
     this.txtFiledDecoration,
     required this.keywords,
-    this.suggestionsList,
+    this.suggestionsListHeight,
+    this.suggestionsListBgColor,
+    this.suggestionsListTextStyle,
   });
 
   @override
@@ -63,38 +93,41 @@ class _MsgTextFieldState extends State<MsgTextField> {
             maxLines: 4,
             scrollPadding:
                 const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            style: widget.txtFieldStyle,
             decoration:
                 widget.txtFiledDecoration ?? _defaultDecoration(widget.hintTxt),
           ),
           if (_showSuggestions)
-            widget.suggestionsList ??
-                Container(
-                  height: 150,
-                  color: Colors.white,
-                  child: ListView.builder(
-                    padding: EdgeInsets.all(0),
-                    itemCount: _suggestions.length,
-                    itemBuilder: (context, index) {
-                      final suggestion = _suggestions[index];
-                      return ListTile(
-                        title: Text(suggestion),
-                        onTap: () {
-                          widget.msgController.text = suggestion;
+            Container(
+              height: widget.suggestionsListHeight ?? 150,
+              color: widget.suggestionsListBgColor ?? Colors.white,
+              child: ListView.builder(
+                padding: EdgeInsets.all(0),
+                itemCount: _suggestions.length,
+                itemBuilder: (context, index) {
+                  final suggestion = _suggestions[index];
+                  return ListTile(
+                    title: Text(
+                      suggestion,
+                      style: widget.suggestionsListTextStyle,
+                    ),
+                    onTap: () {
+                      widget.msgController.text = suggestion;
 
-                          widget.msgController.selection =
-                              TextSelection.fromPosition(
-                            TextPosition(
-                              offset: widget.msgController.text.length,
-                            ),
-                          );
-                          setState(() {
-                            _showSuggestions = false;
-                          });
-                        },
+                      widget.msgController.selection =
+                          TextSelection.fromPosition(
+                        TextPosition(
+                          offset: widget.msgController.text.length,
+                        ),
                       );
+                      setState(() {
+                        _showSuggestions = false;
+                      });
                     },
-                  ),
-                ),
+                  );
+                },
+              ),
+            ),
         ],
       ),
     );

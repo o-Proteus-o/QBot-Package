@@ -1,9 +1,7 @@
 name: q_chat_bot
-description: "A customizable chatbot widget for Flutter apps."
-version: 1.0.0
+description: "A customizable Flutter chatbot package with support for user and bot messages, rich UI elements, and suggestion handling for seamless interactions."
+version: 1.0.5
 homepage: https://github.com/el-kady3zzat/QBot-Package
-repository: https://github.com/el-kady3zzat/QBot-Package
-issue_tracker: https://github.com/el-kady3zzat/QBot-Package/issues
 
 environment:
   sdk: ">=3.2.0 <4.0.0"

@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
 
+/// A widget that represents a chat message.
+///
+/// It can display either a user or bot message, and includes options for
+/// custom styling of the message bubble and avatar, along with the message time.
 class ChatMsg extends StatelessWidget {
+  /// The message content.
   final String msg;
+
+  /// Whether the message is from the user or the bot.
   final bool isUser;
 
+  /// Background color for bot message bubbles.
   final Color botMsgBgColor;
+
+  /// Icon for the bot's avatar.
   final Icon botIcon;
+
+  /// Background color for user message bubbles.
   final Color userMsgBgColor;
+
+  /// Icon for the user's avatar.
   final Icon userIcon;
+
+  /// Optional text style for the message.
   final TextStyle? msgStyle;
+
+  /// Optional widget displaying the time of the message.
   final Widget? msgTime;
+
+  /// Flag indicating if the bot is typing.
   final bool? isTyping;
+
+  /// Widget to show when the bot is typing.
   final Widget? typing;
 
+  /// Constructs a [ChatMsg] widget.
   const ChatMsg({
     super.key,
     required this.msg,
@@ -85,6 +108,10 @@ class ChatMsg extends StatelessWidget {
     );
   }
 
+  /// Returns a decoration for the message bubble.
+  ///
+  /// The decoration includes rounded corners for user and bot messages, with
+  /// different background colors based on the sender.
   Decoration _msgDecoration() {
     return BoxDecoration(
       color: isUser ? userMsgBgColor : botMsgBgColor,
